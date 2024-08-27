@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Rental.Models.Payment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_UserLayout";
+}
+
+<h3>Payment Index</h3>
+<br />
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title"><a asp-action="Create">Create New</a></p>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="example" class="display expandable-table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Payment Method
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CVV)
+                                        </th>
+                                        <th>
+                                            Card Number
+                                        </th>
+                                        <th>
+                                            Expiry Date
+                                        </th>
+                                        <th>
+                                            User Name
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            @foreach (var item in Model) {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PaymentMethod)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CVV)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CardNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ExpiryDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Reservation.UserID)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.PaymentID">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.PaymentID">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.PaymentID">Delete</a>
+                                        </td>
+                                    </tr>
+                            }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

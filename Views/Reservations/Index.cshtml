@@ -1,0 +1,156 @@
+﻿@model IEnumerable<Rental.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";
+}
+
+<h3>Reservation Index</h3>
+<br />
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                @* <p class="card-title"><a asp-action="Create">Create New</a></p> *@
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="example" class="display expandable-table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            User Name
+                                        </th>
+                                        <th>
+                                            Car Name
+                                        </th>
+                                        <th>
+                                            Pickup Location
+                                        </th>
+                                        <th>
+                                            Drop Location
+                                        </th>
+                                        <th>
+                                            Pickup Date
+                                        </th>
+                                        <th>
+                                            Dropoff Date
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+                                        
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.User.FirstName)
+                                                @Html.DisplayFor(modelItem => item.User.LastName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Car.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PickupLocation)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DropoffLocation)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PickupDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DropoffDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ReservationStatus)
+                                            </td>
+                                            
+                                            <td>
+                                                @* <a asp-action="Edit" asp-route-id="@item.ReservationID">Edit</a> | *@
+                                                <a asp-action="Details" asp-route-id="@item.ReservationID">Details</a> |
+                                                @* <a asp-action="Delete" asp-route-id="@item.ReservationID">Delete</a> *@
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* <h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Pickup Location
+            </th>
+            <th>
+                Drop Location
+            </th>
+            <th>
+                Pickup Date
+            </th>
+            <th>
+                Dropoff Date
+            </th>
+            <th>
+                Reservation Status
+            </th>
+            <th>
+                User Name
+            </th>
+            <th>
+                Car Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropoffLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropoffDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.CarID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ReservationID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ReservationID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ReservationID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+ *@

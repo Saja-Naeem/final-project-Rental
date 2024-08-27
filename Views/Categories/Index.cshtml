@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Rental.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";
+}
+
+
+<h2>Category Index</h2>
+<br />
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title"><a asp-action="Create">Create New</a></p>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="example" class="display expandable-table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Category Name
+                                        </th>
+                                       @*  <th>
+                                            Is Deleted
+                                        </th> *@
+                                        <th>
+                                            Created At
+                                        </th>
+                                        <th>
+                                            Updated At
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            @foreach (var item in Model) {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CategoryName)
+                                        </td>
+                                        @* <td>
+                                            @Html.DisplayFor(modelItem => item.IsDeleted)
+                                        </td> *@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CreatedAt)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UpdatedAt)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.CategoryID">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.CategoryID">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.CategoryID">Delete</a>
+                                        </td>
+                                    </tr>
+                            }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

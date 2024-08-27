@@ -1,0 +1,94 @@
+﻿@model CarsViewModel
+@{
+    ViewData["Title"] = "Cars";
+    Layout = "_UserLayout";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header">
+    <h1 class="display-3 text-uppercase text-white mb-3">Car Listing</h1>
+    <div class="d-inline-flex text-white">
+        <h6 class="text-uppercase m-0"><a class="text-white" href="">Home</a></h6>
+        <h6 class="text-body m-0 px-3">/</h6>
+        <h6 class="text-uppercase text-body m-0">Car Listing</h6>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Rent A Car Start -->
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <h1 class="display-4 text-uppercase text-center mb-5">Find Your Car</h1>
+        <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 " style="margin-left: 160px; margin-right: 160px; border-radius: 50px;">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+                <div class="navbar-nav py-0">
+                    @foreach(var item in Model.Categories)
+                    {
+                        <a href="@Url.Action("Cars", "Home", new { categoryId = item.CategoryID })" class="nav-item nav-link">@item.CategoryName</a>
+                    }
+                    
+                </div>
+            </div>
+        </nav>
+        <br /><br />
+        <div class="row">
+            @foreach (var car in Model.Cars)
+            {
+                <div class="col-lg-4 col-md-6 mb-2">
+                    <div class="rent-item mb-4">
+                        <img src="@Url.Content("~/Images/" + car.ImagePath )" asp-append-version="true" />
+                        <h4 class="text-uppercase mb-4">@car.Name</h4>
+                    <div class="d-flex justify-content-center mb-4">
+                        <div class="px-2">
+                            <i class="fa fa-car text-primary mr-1"></i>
+                            <span>@car.Model</span>
+                        </div>
+                        <div class="px-2 border-left border-right">
+                            <i class="fa fa-cogs text-primary mr-1"></i>
+                                <span>@car.Transmission?.TransmissionType</span>
+                        </div>
+                        <div class="px-2">
+                            <i class="fa fa-users text-primary mr-1"></i>
+                            <span>@car.NumberOfSeats seats</span>
+                        </div>
+                    </div>
+                        <a class="btn btn-primary px-3" href="/Home/DetailsCar/@car.CarID">$@car.Price.00/Day</a>
+                </div> 
+            </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Rent A Car End -->
+<!-- Vendor Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="owl-carousel vendor-carousel">
+            <div class="bg-light p-4">
+                <img src="~/User_assets/img/vendor-1.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="~/User_assets/img/vendor-2.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="~/User_assets/img/vendor-3.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="~/User_assets/img/vendor-4.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="~/User_assets/img/vendor-5.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="~/User_assets/img/vendor-6.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="~/User_assets/img/vendor-7.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="~/User_assets/img/vendor-8.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Vendor End -->

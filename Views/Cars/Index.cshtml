@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Rental.Models.Car>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";
+}
+
+<h2>Car Index</h2>
+<br />
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title"><a asp-action="Create">Create New</a></p>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="example" class="display expandable-table" style="width:100%">
+
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Model)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Price)
+                                        </th>
+                                        <th>
+                                            #Seats
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+                                        <th>
+                                            Fuel Type
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Description)
+                                        </th>
+                                        <th>
+                                            Image
+                                        </th>
+                                        @* <th>
+                                            Is Deleted
+                                        </th> *@
+                                        @* <th>
+                                            @Html.DisplayNameFor(model => model.CreatedAt)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.UpdatedAt)
+                                        </th> *@
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Category)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Transmission)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            @foreach (var item in Model) {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Model)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NumberOfSeats)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AvailabilityStatus)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FuelType)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                                <img src="@Url.Content("~/Images/" + item.ImagePath )" asp-append-version="true" width="100" height="100" />
+                                        </td>
+                                        @* <td>
+                                            @Html.DisplayFor(modelItem => item.IsDeleted)
+                                        </td> *@
+                                        @* <td>
+                                            @Html.DisplayFor(modelItem => item.CreatedAt)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UpdatedAt)
+                                        </td> *@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Transmission.TransmissionType)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.CarID">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.CarID">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.CarID">Delete</a>
+                                        </td>
+                                    </tr>
+                            }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

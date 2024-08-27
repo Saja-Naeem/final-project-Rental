@@ -1,0 +1,63 @@
+﻿@model Rental.Models.Reservation
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_AdminLayout";
+}
+
+<h1>Edit</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            @* <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ReservationID" />
+            <div class="form-group">
+                <label asp-for="UserID" class="control-label"></label>
+                <select asp-for="UserID" class="form-control" asp-items="ViewBag.UserID"></select>
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarID" class="control-label"></label>
+                <select asp-for="CarID" class="form-control" asp-items="ViewBag.CarID"></select>
+                <span asp-validation-for="CarID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PickupLocation" class="control-label"></label>
+                <input asp-for="PickupLocation" class="form-control" />
+                <span asp-validation-for="PickupLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DropoffLocation" class="control-label"></label>
+                <input asp-for="DropoffLocation" class="form-control" />
+                <span asp-validation-for="DropoffLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PickupDate" class="control-label"></label>
+                <input asp-for="PickupDate" class="form-control" />
+                <span asp-validation-for="PickupDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DropoffDate" class="control-label"></label>
+                <input asp-for="DropoffDate" class="form-control" />
+                <span asp-validation-for="DropoffDate" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="ReservationStatus" class="control-label"></label>
+                <select asp-for="ReservationStatus" class="form-control"></select>
+                <span asp-validation-for="ReservationStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+

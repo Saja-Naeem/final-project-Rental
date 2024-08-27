@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Rental.Models.Transmission>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";
+}
+
+<h3>Transmission Index</h3>
+<br />
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title"><a asp-action="Create">Create New</a></p>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="example" class="display expandable-table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Transmission Type
+                                        </th>
+                                        <th>
+                                            Created At
+                                        </th>
+                                        <th>
+                                            Updated At
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            @foreach (var item in Model) {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TransmissionType)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CreatedAt)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UpdatedAt)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.TransmissionID">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.TransmissionID">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.TransmissionID">Delete</a>
+                                        </td>
+                                    </tr>
+                            }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
